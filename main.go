@@ -22,7 +22,7 @@ const (
 	cacheTTL         = int64(30 * 24 * 60 * 60)
 	cacheValFound    = "found"
 	cacheValNotFound = "notfound"
-	userAgent        = "navidrome-lrclib/0.1.0 (https://github.com/kepelet/navidrome-lrclib)"
+	userAgent        = "navidrome-lrclib/0.1.0 (https://github.com/kepelet/navidrome-lrclib-plugin)"
 )
 
 type jobInfo struct {

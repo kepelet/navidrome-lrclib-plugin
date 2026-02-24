@@ -1,5 +1,9 @@
 # Navidrome LRCLIB plugin
 
+> [!IMPORTANT]
+>
+> Not work on NavidromeUI (expected)
+
 NOTES (bahasa indon):
 
 Beberapa behavior yang berbeda dengan penerapan di aplikasi flo:
