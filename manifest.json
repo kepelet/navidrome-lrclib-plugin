@@ -1,0 +1,56 @@
+{
+  "$schema": "https://raw.githubusercontent.com/navidrome/navidrome/refs/heads/master/plugins/manifest-schema.json",
+  "name": "LRCLIB",
+  "author": "Kelompok Penerbang Walet",
+  "version": "0.1.0",
+  "description": "Automatically fetch and save synced lyrics from LRCLIB instance for now-playing songs",
+  "website": "https://github.com/kepelet/navidrome-lrclib-plugin",
+  "permissions": {
+    "users": {
+      "reason": "Process scrobble events per user to detect now-playing songs"
+    },
+    "http": {
+      "reason": "Fetch lyrics from the LRCLIB API",
+      "requiredHosts": ["lrclib.net", "lrclib.flooo.club"]
+    },
+    "library": {
+      "reason": "Locate song files in the music library to write .lrc sidecar files",
+      "filesystem": true
+    },
+    "subsonicapi": {
+      "reason": "Get the filesystem path of a song via the getSong endpoint"
+    },
+    "cache": {
+      "reason": "Cache lyrics fetch results to avoid redundant API calls for the same track"
+    },
+    "kvstore": {
+      "reason": "Persist queued lyrics-fetch jobs so the scheduler callback can process them asynchronously",
+      "maxSize": "1048576"
+    },
+    "scheduler": {
+      "reason": "Schedule asynchronous lyrics fetch tasks so NowPlaying returns immediately without blocking on HTTP requests"
+    }
+  },
+  "config": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "baseurl": {
+          "type": "string",
+          "title": "LRCLIB Base URL",
+          "description": "Base URL of the lrclib instance to use. Leave empty to use the flo instance.",
+          "default": "https://lrclib.flooo.club"
+        }
+      }
+    },
+    "uiSchema": {
+      "type": "VerticalLayout",
+      "elements": [
+        {
+          "type": "Control",
+          "scope": "#/properties/baseurl"
+        }
+      ]
+    }
+  }
+}
